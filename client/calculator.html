@@ -1,18 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>calculator</title>
+    <style>
+        
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 150px; 
+         
+        }
+        .title {
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            max-width: 400px;  
+            padding: 20px;
+            border-radius: 5px;
+            border: 2px solid #333;
+            margin-left: 515px;
+        }
+        .text {
+        display: inline-flex;
+        cursor: pointer;
+        margin-right: 15px;
+        margin-bottom: 20px;
+        font-size: 18px;
+        
+        }
+        .radio-mark {
+            cursor: pointer;
+        }
+       
+        form {
+            max-width: 340px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #666;
+        }
+        @media (max-width:2000px) {
+        .container{
+               margin: auto;
+              margin-top: 140px;
+              
+            }
+        }
+       
+    </style>   
 </head>
 <body>
-    <h1>BMI Calculate</h1>
-    <form action="/calculator" method="post">
-        <label for="weight">weight</label>
-        <input type="text" name="weight" placeholder="enter your weight">
-        <label for="height">height</label>
-        <input type="text" name="height" placeholder="enter your height">
-        <button type="submit">calculate</button>
-    </form>
+    <div class="container">
+        <h1 class="title">BMI Calculator</h1>
+        <form id="bmiForm" action="/calculator" method="post">
+
+            <input type="radio" id="male" name="gender" value="male" class="radio-mark">
+            <label for="male"  class="text">Men</label>
+
+            <input type="radio" id="female" name="gender" value="female" class="radio-mark">
+            <label for="female"  class="text">Women</label>
+
+            <label for="age">Age</label>
+            <input type="text" name="age" placeholder="Enter your age">
+
+            <label for="weight">Weight</label>
+            <input type="text" name="weight" placeholder="Enter your weight">
+
+            <label for="height">Height</label>
+            <input type="text" name="height" placeholder="enter your height">
+
+            <button type="submit">calculate</button>
+
+        </form>
+        <br/>
+        <br/>
+    </div>
+    <p class="footer">abc123@health.com</p>
+    <script>
+        document.getElementById('bmiForm').addEventListener('submit', function (e) {
+            const age = document.querySelector('input[name="age"]').value.trim();
+            const weight = document.querySelector('input[name="weight"]').value.trim();
+            const height = document.querySelector('input[name="height"]').value.trim();
+            const gender = document.querySelector('input[name="gender"]:checked');
+
+            if (!gender) {
+            alert("Please select your gender.");
+            e.preventDefault();
+            return;
+            }
+
+            if (!age || !weight || !height) {
+            alert("Please fill in all the fields.");
+            e.preventDefault(); 
+            return;
+            }
+
+            if (isNaN(age) || isNaN(weight) || isNaN(height)) {
+            alert("Please enter valid numbers in age, weight, and height.");
+            e.preventDefault();
+            return;
+            }
+        });
+    </script>
 </body>
 </html>
