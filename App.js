@@ -5,7 +5,7 @@ const app=server()
 const pathfinder=path.join(__dirname,'client')
 app.use(bodyparser.urlencoded({extended:true}))
 app.get("/calculator",(req,res)=>{
-    res.sendFile(`${pathfinder}/calculator.html`)
+    res.sendFile(`${pathfinder}/index.html`)
 
 });
 app.post("/calculator",(req,res)=>{
