@@ -9,4 +9,3 @@ It helps users quickly determine whether they are underweight, normal weight, ov
 ### CONCLUSION
 
 The calculator provides instant feedback and promotes health awareness by encouraging users to track their body metrics. 
-
